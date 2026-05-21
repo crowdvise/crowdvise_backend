@@ -1,0 +1,99 @@
+from fastapi import APIRouter, Depends, HTTPException
+from config import settings
+from dependencies.auth import AuthUser, get_current_user, require_generate_stages_limit, require_run_limit
+from models import (
+    SimulationHistoryResponse,
+    SimulationRequest,
+    SimulationResult,
+    SimulationRunSummary,
+    StageGenerationRequest,
+    StageGenerationResponse,
+)
+from services.journey_generator import generate_stages
+from services.simulation_runner import run_simulation
+from services.insight_aggregator import build_simulation_result
+from services.simulation_store import (
+    SimulationStoreError,
+    get_simulation_run,
+    handle_store_error,
+    list_simulation_runs,
+    save_simulation_run,
+)
+
+router = APIRouter(prefix="/simulation", tags=["simulation"])
+
+
+@router.post("/generate-stages", response_model=StageGenerationResponse)
+async def generate_journey_stages(
+    request: StageGenerationRequest,
+    _user: AuthUser = Depends(require_generate_stages_limit),
+) -> StageGenerationResponse:
+    stages = await generate_stages(
+        product_description=request.product_description,
+        test_scenario=request.test_scenario,
+        target_segment=request.target_segment,
+    )
+    if not stages:
+        raise HTTPException(status_code=500, detail="No journey stages were generated")
+
+    return StageGenerationResponse(suggested_stages=stages)
+
+
+@router.post("/run", response_model=SimulationResult)
+async def run(
+    request: SimulationRequest,
+    user: AuthUser = Depends(require_run_limit),
+) -> SimulationResult:
+    if not request.journey_stages:
+        raise HTTPException(status_code=400, detail="At least one journey stage is required")
+
+    journeys = await run_simulation(request)
+    result = await build_simulation_result(journeys, request.product_description)
+
+    if not settings.auth_disabled:
+        try:
+            save_simulation_run(user.id, request, result)
+        except SimulationStoreError as exc:
+            raise handle_store_error(exc) from exc
+
+    return result
+
+
+@router.get("/history", response_model=SimulationHistoryResponse)
+async def history(user: AuthUser = Depends(get_current_user)) -> SimulationHistoryResponse:
+    try:
+        rows = list_simulation_runs(user.id)
+    except SimulationStoreError as exc:
+        raise handle_store_error(exc) from exc
+
+    runs = [
+        SimulationRunSummary(
+            id=row["id"],
+            product_description=row["product_description"],
+            target_segment=row["target_segment"],
+            panel_size=row["panel_size"],
+            overall_conversion_rate=row["overall_conversion_rate"],
+            overall_dropout_rate=row["overall_dropout_rate"],
+            overall_delayed_rate=row["overall_delayed_rate"],
+            readiness_score=row["readiness_score"],
+            created_at=row["created_at"],
+        )
+        for row in rows
+    ]
+    return SimulationHistoryResponse(runs=runs)
+
+
+@router.get("/{simulation_id}", response_model=SimulationResult)
+async def get_run(
+    simulation_id: str,
+    user: AuthUser = Depends(get_current_user),
+) -> SimulationResult:
+    try:
+        result = get_simulation_run(user.id, simulation_id)
+    except SimulationStoreError as exc:
+        raise handle_store_error(exc) from exc
+
+    if not result:
+        raise HTTPException(status_code=404, detail="Simulation not found")
+
+    return result
