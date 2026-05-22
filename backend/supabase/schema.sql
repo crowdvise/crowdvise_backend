@@ -1,4 +1,4 @@
--- Run once in Supabase: SQL Editor → New query → paste → Run
+-- Run once in Supabase
 
 create table if not exists public.simulation_runs (
   id uuid primary key,
@@ -26,4 +26,3 @@ create policy "Users read own simulation runs"
   to authenticated
   using (auth.uid() = user_id);
 
--- Backend uses service_role for insert/select with user_id from JWT (bypasses RLS).

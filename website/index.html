@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="CrowdVise — synthetic behavioural panels that simulate how customers react through your product journey before you ship.">
+<title>CrowdVise — Know your customers before they know you</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- CURSOR -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- GRID BG -->
+<div class="grid-bg"></div>
+
+<!-- ── NAV ── -->
+<nav>
+  <a href="#" class="nav-logo">Crowd<em>Vise</em></a>
+  <ul class="nav-links">
+    <li><a href="#how">How it works</a></li>
+    <!-- <li><a href="#features">Features</a></li> -->
+    <li><a href="#science">The science</a></li>
+    <li><a href="#demo">Demo</a></li>
+  </ul>
+  <div class="nav-ctas">
+    <a href="#" data-cv-href="login" class="btn-nav-ghost">Sign in</a>
+    <a href="#" data-cv-href="signup" class="btn-nav-primary">Get started</a>
+  </div>
+</nav>
+
+<main id="main">
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <!-- <div class="hero-eyebrow">
+    <div class="eyebrow-dot"></div>
+    Behavioural simulation · OCEAN-grounded
+  </div> -->
+  <h1 class="hero-headline">
+    Know how your customers<br>will react <em>before</em> you start selling.
+  </h1>
+  <p class="hero-sub">
+    CrowdVise generates a synthetic panel of psychologically grounded AI customers that behave through your product journey: dropping off, complaining, converting, and more; exactly as real humans would, and you get to see their thought processes.
+  </p>
+  <div class="hero-ctas">
+    <a href="#demo" class="btn-hero-primary">
+      See it live
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+    <a href="#" data-cv-href="signup" class="btn-hero-ghost">
+      Start free
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+  <div class="hero-trust">
+    <div class="trust-item"><strong>OCEAN</strong> psychology</div>
+    <div class="trust-sep"></div>
+    <div class="trust-item"><strong>5</strong> behavioural frameworks</div>
+    <div class="trust-sep"></div>
+    <div class="trust-item">Results in <strong>&lt;5 min</strong></div>
+    <div class="trust-sep"></div>
+    <div class="trust-item">No code needed</div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ── HOW IT WORKS ── -->
+<section class="how-section" id="how">
+  <div class="section-label">How it works</div>
+  <h2 class="section-title reveal">Four steps to behavioural clarity.</h2>
+  <p class="section-sub reveal reveal-delay-1">No recruitment. No scheduling. No waiting three months.</p>
+
+  <div class="steps-grid reveal reveal-delay-2">
+    <div class="step-card">
+      <div class="step-number">01</div>
+      <span class="step-icon">✏️</span>
+      <div class="step-title">Describe your product</div>
+      <div class="step-desc">Plain English. What you're testing, who your customers are, what you want to learn.</div>
+      <div class="step-connector"></div>
+    </div>
+    <div class="step-card">
+      <div class="step-number">02</div>
+      <span class="step-icon">🗺️</span>
+      <div class="step-title">Review the journey</div>
+      <div class="step-desc">AI generates a customer journey for your product. Edit, reorder, or add stages before running.</div>
+      <div class="step-connector"></div>
+    </div>
+    <div class="step-card">
+      <div class="step-number">03</div>
+      <span class="step-icon">👥</span>
+      <div class="step-title">Watch the panel react</div>
+      <div class="step-desc">Synthetic customers move through your journey in real time. See exactly who drops off and why.</div>
+      <div class="step-connector"></div>
+    </div>
+    <div class="step-card">
+      <div class="step-number">04</div>
+      <span class="step-icon">⚡</span>
+      <div class="step-title">Test a fix</div>
+      <div class="step-desc">Get a specific recommendation, apply it, rerun the simulation. Compare results side by side.</div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ── LIVE DEMO ── -->
+<section class="demo-section" id="demo">
+  <div class="section-label">Live demo</div>
+  <h2 class="section-title reveal">See a simulation run.</h2>
+  <p class="section-sub reveal reveal-delay-1">Real output from a real simulation — a $50 jollof rice kit tested against a panel of 10 customers in the Greater Toronto Area.</p>
+
+  <div class="demo-tabs reveal reveal-delay-2" role="tablist">
+    <button type="button" class="demo-tab active" data-tab="race" role="tab" aria-selected="true">Live Race</button>
+    <button type="button" class="demo-tab" data-tab="insights" role="tab" aria-selected="false">Insights</button>
+    <button type="button" class="demo-tab" data-tab="agent" role="tab" aria-selected="false">Agent Detail</button>
+  </div>
+
+  <div class="demo-window reveal reveal-delay-3">
+    <div class="demo-window-bar">
+      <div class="window-dots">
+        <div class="window-dot wd-r"></div>
+        <div class="window-dot wd-y"></div>
+        <div class="window-dot wd-g"></div>
+      </div>
+      <div class="window-url">app.crowdvise.io/simulation/jollof-kit-oct-24</div>
+    </div>
+    <div class="demo-content">
+
+      <!-- TAB: RACE -->
+      <div id="tab-race" class="demo-inner">
+        <div class="demo-left">
+          <div class="demo-product-card">
+            <div class="dpc-label">Simulation · Jollof Rice Kit</div>
+            <div class="dpc-product">$50 West African Meal Kit</div>
+            <div class="dpc-seg">Millennials, Greater Toronto, 28–40</div>
+            <div class="dpc-stages">
+              <div class="dpc-stage">Instagram Ad</div>
+              <div class="dpc-stage active">Checkout ⚠</div>
+              <div class="dpc-stage">Product Page</div>
+              <div class="dpc-stage">Post-Email</div>
+            </div>
+          </div>
+          <div class="demo-metrics">
+            <div class="dm-box"><span class="dm-val g">10%</span><span class="dm-key">Converted</span></div>
+            <div class="dm-box"><span class="dm-val r">20%</span><span class="dm-key">Dropped</span></div>
+            <div class="dm-box"><span class="dm-val a">70%</span><span class="dm-key">Stalled</span></div>
+          </div>
+        </div>
+        <div class="demo-right">
+          <div class="race-grid-demo">
+            <div class="race-grid-demo-label">
+              <div class="live-dot"></div>
+              Panel race — 10 agents
+            </div>
+            <div class="race-cols">
+              <div class="race-col-demo">
+                <div class="race-col-head">Instagram</div>
+                <div class="agent-node an-blue">AT</div>
+                <div class="agent-node an-red" style="opacity:0.5">DK</div>
+                <div class="agent-node an-blue">JW</div>
+              </div>
+              <div class="race-col-demo">
+                <div class="race-col-head">Product Pg</div>
+                <div class="agent-node an-blue">ZO</div>
+                <div class="agent-node an-orange">MC</div>
+                <div class="agent-node an-amber">LP</div>
+              </div>
+              <div class="race-col-demo">
+                <div class="race-col-head">Checkout ⚡</div>
+                <div class="agent-node an-orange">RM</div>
+                <div class="agent-node an-red">SL</div>
+                <div class="agent-node an-amber">KJ</div>
+                <div class="agent-node an-orange">AR</div>
+              </div>
+              <div class="race-col-demo">
+                <div class="race-col-head">Post-Email</div>
+                <div class="agent-node an-green">DK</div>
+                <div class="agent-node an-blue">JM</div>
+              </div>
+            </div>
+          </div>
+          <div class="insight-preview">
+            <div class="ip-label">Top friction trigger</div>
+            <div class="ip-item">
+              <div class="ip-num">01</div>
+              34% drop at Checkout — $6.99 shipping fee appeared without warning
+            </div>
+            <div class="ip-item">
+              <div class="ip-num">02</div>
+              70% stalled — price confidence gap. Add restaurant comparison.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB: INSIGHTS -->
+      <div id="tab-insights" class="demo-inner" hidden>
+        <div style="display:flex;flex-direction:column;gap:14px;width:100%;">
+          <div style="background:var(--s2);border:1px solid var(--border2);border-radius:16px;padding:20px;border-left:3px solid var(--blue);">
+            <div style="font-size:10px;font-family:var(--mono);color:var(--dim);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:8px;">Insight 01 · Checkout · 34% dropout</div>
+            <div style="font-size:14px;color:var(--text);font-weight:600;margin-bottom:6px;">Hidden shipping cost is your biggest leak</div>
+            <div style="font-size:13px;color:var(--mid);line-height:1.7;">$6.99 shipping appeared at checkout without prior mention. Agents with high loss aversion — 52% of your panel — showed unexpected_cost friction the moment it appeared. Show shipping cost on the product page.</div>
+            <div style="margin-top:12px;display:inline-flex;align-items:center;gap:6px;background:var(--blue-dim);border:1px solid rgba(79,122,255,0.2);color:var(--blue);font-size:11px;padding:6px 12px;border-radius:8px;cursor:pointer;font-weight:600;">⚡ Test a fix</div>
+          </div>
+          <div style="background:var(--s2);border:1px solid var(--border2);border-radius:16px;padding:20px;border-left:3px solid var(--amber);">
+            <div style="font-size:10px;font-family:var(--mono);color:var(--dim);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:8px;">Insight 02 · All stages · 70% stalled</div>
+            <div style="font-size:14px;color:var(--text);font-weight:600;margin-bottom:6px;">Stall epidemic — not a dropout problem</div>
+            <div style="font-size:13px;color:var(--mid);line-height:1.7;">70% of your panel is interested but not buying. This isn't rejection — it's hesitation. The missing piece is price confidence. Add "Save $18 vs dining out" comparison text to the product page. Prospect Theory predicts this reframes the purchase as a gain.</div>
+          </div>
+          <div style="background:var(--s2);border:1px solid var(--border2);border-radius:16px;padding:20px;border-left:3px solid var(--green);">
+            <div style="font-size:10px;font-family:var(--mono);color:var(--dim);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:8px;">Insight 03 · Segment split</div>
+            <div style="font-size:14px;color:var(--text);font-weight:600;margin-bottom:6px;">West African familiar buyers need different copy</div>
+            <div style="font-size:13px;color:var(--mid);line-height:1.7;">Agents with high West African cuisine familiarity drop on value — they can make this cheaper at home. Reframe copy from authenticity to time-saved and convenience. "Skip the 2-hour prep" outperforms "restaurant-quality" for that segment.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB: AGENT -->
+      <div id="tab-agent" class="demo-inner" hidden>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;width:100%;">
+          <div style="background:var(--s2);border:1px solid var(--border2);border-radius:16px;padding:20px;">
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+              <div style="width:44px;height:44px;border-radius:13px;background:linear-gradient(135deg,var(--amber),#FF8C47);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:white;flex-shrink:0;">ZO</div>
+              <div>
+                <div style="font-size:15px;font-weight:700;color:var(--text);">Zara Okafor, 29</div>
+                <div style="font-size:11px;color:var(--dim);">Scarborough · Deliberate</div>
+              </div>
+              <div style="margin-left:auto;background:var(--amber-dim);color:var(--amber);border:1px solid rgba(255,181,71,0.3);font-size:10px;font-family:var(--mono);padding:3px 9px;border-radius:6px;">Stalled</div>
+            </div>
+            <div style="font-size:11px;color:var(--dim);font-family:var(--mono);margin-bottom:8px;letter-spacing:0.08em;text-transform:uppercase;">OCEAN Profile</div>
+            <div style="display:flex;flex-direction:column;gap:6px;">
+              <div style="display:flex;align-items:center;gap:10px;"><span style="font-size:10px;color:var(--dim);font-family:var(--mono);width:32px;">Open</span><div style="flex:1;height:4px;background:rgba(255,255,255,0.06);border-radius:2px;overflow:hidden;"><div style="width:80%;height:100%;background:var(--blue);border-radius:2px;"></div></div><span style="font-size:10px;color:var(--mid);font-family:var(--mono);">0.8</span></div>
+              <div style="display:flex;align-items:center;gap:10px;"><span style="font-size:10px;color:var(--dim);font-family:var(--mono);width:32px;">Con</span><div style="flex:1;height:4px;background:rgba(255,255,255,0.06);border-radius:2px;overflow:hidden;"><div style="width:70%;height:100%;background:var(--purple);border-radius:2px;"></div></div><span style="font-size:10px;color:var(--mid);font-family:var(--mono);">0.7</span></div>
+              <div style="display:flex;align-items:center;gap:10px;"><span style="font-size:10px;color:var(--dim);font-family:var(--mono);width:32px;">Agr</span><div style="flex:1;height:4px;background:rgba(255,255,255,0.06);border-radius:2px;overflow:hidden;"><div style="width:90%;height:100%;background:var(--green);border-radius:2px;"></div></div><span style="font-size:10px;color:var(--mid);font-family:var(--mono);">0.9</span></div>
+              <div style="display:flex;align-items:center;gap:10px;"><span style="font-size:10px;color:var(--dim);font-family:var(--mono);width:32px;">Neu</span><div style="flex:1;height:4px;background:rgba(255,255,255,0.06);border-radius:2px;overflow:hidden;"><div style="width:40%;height:100%;background:var(--red);border-radius:2px;"></div></div><span style="font-size:10px;color:var(--mid);font-family:var(--mono);">0.4</span></div>
+            </div>
+            <div style="margin-top:14px;font-size:12px;color:var(--mid);line-height:1.6;font-style:italic;padding:10px;background:var(--s3);border-radius:10px;">
+              "Second-generation Nigerian-Canadian nurse. Wants to reconnect with her heritage through cooking but watches her budget carefully."
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:10px;">
+            <div style="background:var(--s2);border:1px solid var(--border);border-radius:12px;padding:14px;">
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;"><span style="font-size:12px;font-weight:600;color:var(--text);">Checkout</span><span style="font-size:9px;background:var(--amber-dim);color:var(--amber);border:1px solid rgba(255,181,71,0.3);padding:2px 7px;border-radius:5px;font-family:var(--mono);">delaying</span></div>
+              <div style="font-size:12px;color:var(--mid);line-height:1.65;font-style:italic;">"$6.99 shipping on top of $48 feels steep. Maybe a second kit to waive the fee — but that's nearly $100 to try something new..."</div>
+              <div style="margin-top:8px;font-size:10px;color:var(--blue);background:var(--blue-dim);border:1px solid rgba(79,122,255,0.2);border-radius:6px;padding:6px 9px;">→ Free shipping on first orders reduces this delay by ~40%</div>
+            </div>
+            <div style="background:var(--s2);border:1px solid var(--border);border-radius:12px;padding:14px;">
+              <div style="font-size:11px;font-family:var(--mono);color:var(--dim);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px;">Friction threshold</div>
+              <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--dim);font-family:var(--mono);margin-bottom:5px;"><span>Start: 55</span><span style="color:var(--amber)">Remaining: 40</span></div>
+              <div style="height:5px;background:rgba(255,255,255,0.05);border-radius:3px;overflow:hidden;"><div style="width:73%;height:100%;background:linear-gradient(90deg,var(--green),var(--amber));border-radius:3px;"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!--
+<div class="section-divider"></div>
+
+── FEATURES (temporarily hidden) ──
+<section class="features-section" id="features">
+  <div class="section-label">Features</div>
+  <h2 class="section-title reveal">Built for decisions, not reports.</h2>
+
+  <div class="features-grid">
+    <div class="feature-card featured reveal">
+      <div class="feature-title">Live simulation race</div>
+      <div class="feature-desc">Watch your synthetic panel move through stages in real time. See who drops, who stalls, who converts — as it happens.</div>
+      <div class="feature-tag">Real-time</div>
+    </div>
+    <div class="feature-card reveal reveal-delay-1">
+      <div class="feature-title">OCEAN-grounded agents</div>
+      <div class="feature-desc">Every agent is built on the Big Five personality model — the most validated framework in behavioural psychology.</div>
+    </div>
+    <div class="feature-card reveal reveal-delay-2">
+      <div class="feature-title">Test a fix</div>
+      <div class="feature-desc">Get a recommended fix, apply it, rerun. Compare before and after side by side with delta charts.</div>
+      <div class="feature-tag">Unique to CrowdVise</div>
+    </div>
+    <div class="feature-card reveal reveal-delay-1">
+      <div class="feature-title">Location-aware panels</div>
+      <div class="feature-desc">Agents are grounded in real geographic and cultural context. Downtown Toronto reacts differently to Mississauga.</div>
+    </div>
+    <div class="feature-card reveal reveal-delay-2">
+      <div class="feature-title">Export anywhere</div>
+      <div class="feature-desc">Export results as PDF, PowerPoint, or CSV. Share a live link with your team or stakeholders.</div>
+    </div>
+    <div class="feature-card featured reveal reveal-delay-3">
+      <div class="feature-title">Five behavioural frameworks</div>
+      <div class="feature-desc">OCEAN, Prospect Theory, Cialdini, Cognitive Load, Status Quo Bias — all baked into every simulation.</div>
+      <div class="feature-tag">Science-backed</div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+-->
+
+<div class="section-divider"></div>
+
+<!-- ── SCIENCE ── -->
+<section class="science-section" id="science">
+  <div class="science-grid">
+    <div class="science-left">
+      <div class="section-label">The science</div>
+      <h2 class="section-title reveal">Behavioural science.</h2>
+      <p class="section-sub reveal reveal-delay-1">Every agent is grounded in five empirically validated frameworks. When a judge asks "how do you know this is realistic?" — you have a real answer.</p>
+      <div class="science-frameworks reveal reveal-delay-2">
+        <div class="framework-item">
+          <div class="fw-icon">🧬</div>
+          <div class="fw-body">
+            <div class="fw-name">Big Five (OCEAN)</div>
+            <div class="fw-desc">Personality foundation — openness, conscientiousness, extraversion, agreeableness, neuroticism</div>
+          </div>
+          <div class="fw-badge">Foundation</div>
+        </div>
+        <div class="framework-item">
+          <div class="fw-icon">⚖️</div>
+          <div class="fw-body">
+            <div class="fw-name">Prospect Theory</div>
+            <div class="fw-desc">Losses feel ~2× more painful than equivalent gains — drives dropout at cost reveals</div>
+          </div>
+          <div class="fw-badge">Kahneman</div>
+        </div>
+        <div class="framework-item">
+          <div class="fw-icon">🪝</div>
+          <div class="fw-body">
+            <div class="fw-name">Cialdini's 6 Principles</div>
+            <div class="fw-desc">Social proof, scarcity, authority — models what makes agents convert, not just drop</div>
+          </div>
+          <div class="fw-badge">Cialdini</div>
+        </div>
+        <div class="framework-item">
+          <div class="fw-icon">🧩</div>
+          <div class="fw-body">
+            <div class="fw-name">Cognitive Load Theory</div>
+            <div class="fw-desc">When complexity itself becomes the friction — models abandonment from mental exhaustion</div>
+          </div>
+          <div class="fw-badge">Sweller</div>
+        </div>
+        <div class="framework-item">
+          <div class="fw-icon">🔒</div>
+          <div class="fw-body">
+            <div class="fw-name">Status Quo Bias</div>
+            <div class="fw-desc">Why people delay rather than decide — models the "I'll do it later" behaviour</div>
+          </div>
+          <div class="fw-badge">Samuelson</div>
+        </div>
+      </div>
+    </div>
+    <div class="science-visual reveal reveal-delay-2">
+      <div class="sv-title">Sample agent profile — Zara Okafor, 29 · Scarborough</div>
+      <div class="agent-profile-demo">
+        <div class="apd-row">
+          <span class="apd-label">Open</span>
+          <div class="apd-bar-bg"><div class="apd-bar-fill" style="width:80%;background:var(--blue)"></div></div>
+          <span class="apd-val">0.80</span>
+        </div>
+        <div class="apd-row">
+          <span class="apd-label">Con</span>
+          <div class="apd-bar-bg"><div class="apd-bar-fill" style="width:70%;background:var(--purple)"></div></div>
+          <span class="apd-val">0.70</span>
+        </div>
+        <div class="apd-row">
+          <span class="apd-label">Ext</span>
+          <div class="apd-bar-bg"><div class="apd-bar-fill" style="width:50%;background:var(--green)"></div></div>
+          <span class="apd-val">0.50</span>
+        </div>
+        <div class="apd-row">
+          <span class="apd-label">Agr</span>
+          <div class="apd-bar-bg"><div class="apd-bar-fill" style="width:90%;background:var(--amber)"></div></div>
+          <span class="apd-val">0.90</span>
+        </div>
+        <div class="apd-row">
+          <span class="apd-label">Neu</span>
+          <div class="apd-bar-bg"><div class="apd-bar-fill" style="width:40%;background:var(--red)"></div></div>
+          <span class="apd-val">0.40</span>
+        </div>
+      </div>
+      <div style="margin-top:20px;padding-top:20px;border-top:1px solid var(--border);display:flex;flex-direction:column;gap:8px;">
+        <div style="font-size:11px;color:var(--dim);font-family:var(--mono);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:4px;">Trigger sensitivities</div>
+        <div style="display:flex;align-items:center;gap:10px;"><span style="font-size:11px;color:var(--dim);font-family:var(--mono);width:110px;flex-shrink:0;">unexpected_cost</span><div style="flex:1;height:4px;background:rgba(255,255,255,0.05);border-radius:2px;overflow:hidden;"><div style="width:50%;height:100%;background:var(--amber);border-radius:2px;"></div></div><span style="font-size:11px;font-family:var(--mono);color:var(--mid);">0.50</span></div>
+        <div style="display:flex;align-items:center;gap:10px;"><span style="font-size:11px;color:var(--dim);font-family:var(--mono);width:110px;flex-shrink:0;">value_mismatch</span><div style="flex:1;height:4px;background:rgba(255,255,255,0.05);border-radius:2px;overflow:hidden;"><div style="width:30%;height:100%;background:var(--red);border-radius:2px;"></div></div><span style="font-size:11px;font-family:var(--mono);color:var(--mid);">0.30</span></div>
+        <div style="display:flex;align-items:center;gap:10px;"><span style="font-size:11px;color:var(--dim);font-family:var(--mono);width:110px;flex-shrink:0;">cognitive_load</span><div style="flex:1;height:4px;background:rgba(255,255,255,0.05);border-radius:2px;overflow:hidden;"><div style="width:30%;height:100%;background:var(--blue);border-radius:2px;"></div></div><span style="font-size:11px;font-family:var(--mono);color:var(--mid);">0.30</span></div>
+      </div>
+      <div style="margin-top:20px;padding:12px;background:var(--s3);border-radius:12px;font-size:12px;color:var(--mid);line-height:1.65;font-style:italic;">
+        "Second-generation Nigerian-Canadian nurse who wants to reconnect with her heritage through cooking. Works rotating shifts and batch cooks when possible."
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ── PLATFORM ── -->
+<section class="platform-section">
+  <div class="section-label" style="justify-content:center">Platforms</div>
+  <h2 class="section-title reveal">Web or mobile.<br>Your choice.</h2>
+  <p class="section-sub reveal reveal-delay-1" style="margin:0 auto 0">CrowdVise runs everywhere. Full-featured web dashboard or on-the-go mobile app — same simulations, same results.</p>
+
+  <div class="platform-cards reveal reveal-delay-2">
+    <a href="#" data-cv-href="webApp" class="platform-card web">
+      <span class="pc-icon">🖥️</span>
+      <div class="pc-platform">Web App</div>
+      <div class="pc-title">CrowdVise for Teams</div>
+      <div class="pc-desc">The full dashboard experience. Run deep simulations, compare results, export to PDF or PowerPoint, and share with your team.</div>
+      <span class="pc-cta">Open web app →</span>
+      <ul class="pc-features">
+        <li>Full results dashboard</li>
+        <li>Team collaboration & sharing</li>
+        <li>Export to PDF, PPT, CSV</li>
+        <li>Simulation history</li>
+      </ul>
+    </a>
+    <a href="#" data-cv-href="mobile" class="platform-card mobile">
+      <span class="pc-icon">📱</span>
+      <div class="pc-platform">Mobile App</div>
+      <div class="pc-title">CrowdVise on the Go</div>
+      <div class="pc-desc">Run simulations from anywhere. Watch your panel race through stages live. Get insights and push notifications when results are ready.</div>
+      <span class="pc-cta" style="background:var(--green);color:#0A1A12;">Download app →</span>
+      <ul class="pc-features">
+        <li>Live simulation race view</li>
+        <li>Push notifications for results</li>
+        <li>Agent cards on tap</li>
+        <li>iOS & Android</li>
+      </ul>
+    </a>
+  </div>
+</section>
+
+<!-- ── CTA ── -->
+<section class="cta-section">
+  <div class="cta-inner reveal">
+    <h2 class="cta-title">Stop guessing.<br>Start simulating.</h2>
+    <p class="cta-sub">The first simulation is free. No credit card. No recruitment. No waiting.</p>
+    <div class="cta-btns">
+      <a href="#" data-cv-href="signup" class="btn-hero-primary">Run your first simulation</a>
+      <a href="#demo" class="btn-hero-ghost">See the demo first</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-logo">Crowd<em>Vise</em></div>
+  <div class="footer-links">
+    <a href="#">Privacy</a>
+    <a href="#">Terms</a>
+    <a href="#" data-cv-href="docs">Docs</a>
+    <a href="#" data-cv-href="contact">Contact</a>
+  </div>
+  <div class="footer-copy">© 2026 CrowdVise Inc.</div>
+</footer>
+
+<script src="js/config.js"></script>
+<script src="js/main.js"></script>
+
+</body>
+</html>
