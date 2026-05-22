@@ -6,7 +6,7 @@
 <meta name="description" content="CrowdVise — synthetic behavioural panels that simulate how customers react through your product journey before you ship.">
 <title>CrowdVise — Know your customers before they know you</title>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/styles.css?v=3">
 </head>
 <body>
 
@@ -21,7 +21,9 @@
 
 <!-- ── NAV ── -->
 <nav>
-  <a href="#" class="nav-logo">Crowd<em>Vise</em></a>
+  <a href="#" class="nav-logo" aria-label="CrowdVise home">
+    <img src="assets/Logo.png" alt="CrowdVise" class="nav-logo-img" width="240" height="64" />
+  </a>
   <ul class="nav-links">
     <li><a href="#how">How it works</a></li>
     <!-- <li><a href="#features">Features</a></li> -->
@@ -38,35 +40,44 @@
 
 <!-- ── HERO ── -->
 <section class="hero">
-  <!-- <div class="hero-eyebrow">
-    <div class="eyebrow-dot"></div>
-    Behavioural simulation · OCEAN-grounded
-  </div> -->
-  <h1 class="hero-headline">
-    Know how your customers<br>will react <em>before</em> you start selling.
-  </h1>
-  <p class="hero-sub">
-    CrowdVise generates a synthetic panel of psychologically grounded AI customers that behave through your product journey: dropping off, complaining, converting, and more; exactly as real humans would, and you get to see their thought processes.
+  <div class="hero-background" aria-hidden="true">
+    <img class="hero-bg-img" src="assets/Background image.png" alt="" />
+    <div class="hero-overlay"></div>
+  </div>
+  <div class="hero-content">
+    <h1 class="hero-headline">
+      Know how your customers<br>will react <em>before</em> you start selling.
+    </h1>
+    <div class="hero-ctas">
+      <a href="#demo" class="btn-hero-primary">
+        See it live
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="#" data-cv-href="signup" class="btn-hero-ghost">
+        Start free
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+    <div class="hero-trust">
+      <div class="trust-item"><strong>OCEAN</strong> psychology</div>
+      <div class="trust-sep"></div>
+      <div class="trust-item"><strong>5</strong> behavioural frameworks</div>
+      <div class="trust-sep"></div>
+      <div class="trust-item">Results in <strong>&lt;5 min</strong></div>
+      <div class="trust-sep"></div>
+      <div class="trust-item">No code needed</div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ── ABOUT ── -->
+<section class="about-section" id="about">
+  <div class="section-label">About</div>
+  <p class="about-text reveal">
+    CrowdVise generates a synthetic panel of psychologically grounded AI customers that behave through your product journey — dropping off, complaining, converting, and more — exactly as real humans would. You get to see their thought processes.
   </p>
-  <div class="hero-ctas">
-    <a href="#demo" class="btn-hero-primary">
-      See it live
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </a>
-    <a href="#" data-cv-href="signup" class="btn-hero-ghost">
-      Start free
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </a>
-  </div>
-  <div class="hero-trust">
-    <div class="trust-item"><strong>OCEAN</strong> psychology</div>
-    <div class="trust-sep"></div>
-    <div class="trust-item"><strong>5</strong> behavioural frameworks</div>
-    <div class="trust-sep"></div>
-    <div class="trust-item">Results in <strong>&lt;5 min</strong></div>
-    <div class="trust-sep"></div>
-    <div class="trust-item">No code needed</div>
-  </div>
 </section>
 
 <div class="section-divider"></div>
