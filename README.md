@@ -56,46 +56,18 @@ See [`backend/.env.example`](backend/.env.example) for CORS, rate limits, and re
 
 The API inserts runs with the service role and scopes rows by `user_id` from the JWT.
 
-## Website (local preview)
+## Website
 
-```bash
-cd website
-python3 -m http.server 8080
-```
-
-Open http://localhost:8080. Configure CTA URLs in [`website/js/config.js`](website/js/config.js). More detail: [`website/README.md`](website/README.md).
-
+Static landing page in [`website/`](website/). Local preview, CTA config, and static deploy.
 ## Deploy (backend)
 
-[`backend/railpack.json`](backend/railpack.json) targets Python 3.11 with:
+From `backend/` on your host or container:
 
 ```bash
 uvicorn main:app --host 0.0.0.0 --port $PORT
 ```
 
 Set production env vars on the host (never commit `.env`). Use explicit `ALLOWED_ORIGINS` — not `*`.
-
-## Project layout
-
-```
-crowdvise/
-├── README.md
-├── requirements.txt          # -r backend/requirements.txt
-├── backend/
-│   ├── main.py
-│   ├── config.py
-│   ├── models.py
-│   ├── routers/
-│   ├── services/
-│   ├── prompts/
-│   ├── dependencies/
-│   ├── middleware/
-│   └── supabase/
-└── website/
-    ├── index.html
-    ├── css/
-    └── js/
-```
 
 ## Security notes
 
