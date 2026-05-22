@@ -1,11 +1,11 @@
-# CrowdVise
+# Crowdvise
 
 Synthetic customer simulation API and marketing site. The backend generates psychologically grounded AI panels (OCEAN + other behavioural and decision making frameworks) that move through a product journey — converting, stalling, or dropping off — so teams can test ideas before shipping.
 
 | Area | Path | Description |
 |------|------|-------------|
 | **API** | [`backend/`](backend/) | FastAPI service: journey generation, simulation runs, Supabase auth & persistence |
-| **Website** | [`website/`](website/) | Static CrowdVise landing page |
+| **Website** | [`website/`](website/) | Static Crowdvise landing page |
 | **Database** | [`backend/supabase/schema.sql`](backend/supabase/schema.sql) | `simulation_runs` table + RLS |
 
 ## Requirements

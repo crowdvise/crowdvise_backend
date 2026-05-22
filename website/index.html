@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="CrowdVise — synthetic behavioural panels that simulate how customers react through your product journey before you ship.">
-<title>CrowdVise — Know your customers before they know you</title>
+<meta name="description" content="Crowdvise — synthetic behavioural panels that simulate how customers react through your product journey before you ship.">
+<title>Crowdvise — Know your customers before they know you</title>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/styles.css?v=3">
+<link rel="stylesheet" href="css/styles.css?v=4">
 </head>
 <body>
 
@@ -21,8 +21,8 @@
 
 <!-- ── NAV ── -->
 <nav>
-  <a href="#" class="nav-logo" aria-label="CrowdVise home">
-    <img src="assets/Logo.png" alt="CrowdVise" class="nav-logo-img" width="240" height="64" />
+  <a href="#" class="nav-logo" aria-label="Crowdvise home">
+    <img src="assets/Logo.png" alt="Crowdvise" class="nav-logo-img" width="240" height="64" />
   </a>
   <ul class="nav-links">
     <li><a href="#how">How it works</a></li>
@@ -76,7 +76,7 @@
 <section class="about-section" id="about">
   <div class="section-label">About</div>
   <p class="about-text reveal">
-    CrowdVise generates a synthetic panel of psychologically grounded AI customers that behave through your product journey — dropping off, complaining, converting, and more — exactly as real humans would. You get to see their thought processes.
+    Crowdvise generates a synthetic panel of psychologically grounded AI customers that behave through your product journey — dropping off, complaining, converting, and more — exactly as real humans would. You get to see their thought processes.
   </p>
 </section>
 
@@ -121,158 +121,145 @@
 
 <div class="section-divider"></div>
 
-<!-- ── LIVE DEMO ── -->
+<!-- ── DEMO ── -->
 <section class="demo-section" id="demo">
-  <div class="section-label">Live demo</div>
-  <h2 class="section-title reveal">See a simulation run.</h2>
-  <p class="section-sub reveal reveal-delay-1">Real output from a real simulation — a $50 jollof rice kit tested against a panel of 10 customers in the Greater Toronto Area.</p>
+  <div class="section-label">See it in action</div>
+  <h2 class="section-title reveal">What a simulation actually shows you.</h2>
+  <p class="section-sub reveal reveal-delay-1" style="max-width: 620px;">
+    You describe a product and customer journey. Crowdvise runs a panel of AI customers through each stage — then tells you who left, who hesitated, who bought, and why.
+  </p>
 
-  <div class="demo-tabs reveal reveal-delay-2" role="tablist">
-    <button type="button" class="demo-tab active" data-tab="race" role="tab" aria-selected="true">Live Race</button>
-    <button type="button" class="demo-tab" data-tab="insights" role="tab" aria-selected="false">Insights</button>
-    <button type="button" class="demo-tab" data-tab="agent" role="tab" aria-selected="false">Agent Detail</button>
-  </div>
+  <div class="demo-showcase reveal reveal-delay-2">
+    <aside class="demo-scenario">
+      <p class="demo-scenario-label">Example scenario</p>
+      <h3 class="demo-scenario-title">$50 West African meal kit</h3>
+      <dl class="demo-scenario-meta">
+        <div>
+          <dt>Audience</dt>
+          <dd>Millennials, Greater Toronto, 28–40</dd>
+        </div>
+        <div>
+          <dt>Panel size</dt>
+          <dd>10 synthetic customers</dd>
+        </div>
+        <div>
+          <dt>Journey</dt>
+          <dd>4 stages you define (or let AI suggest)</dd>
+        </div>
+      </dl>
+    </aside>
 
-  <div class="demo-window reveal reveal-delay-3">
-    <div class="demo-window-bar">
-      <div class="window-dots">
-        <div class="window-dot wd-r"></div>
-        <div class="window-dot wd-y"></div>
-        <div class="window-dot wd-g"></div>
-      </div>
-      <div class="window-url">app.crowdvise.io/simulation/jollof-kit-oct-24</div>
-    </div>
-    <div class="demo-content">
+    <div class="demo-main">
+      <p class="demo-how-read">
+        <strong>How to read this:</strong> Each customer walks your journey left to right. The bars show where the panel ended up — and where friction hit hardest.
+      </p>
 
-      <!-- TAB: RACE -->
-      <div id="tab-race" class="demo-inner">
-        <div class="demo-left">
-          <div class="demo-product-card">
-            <div class="dpc-label">Simulation · Jollof Rice Kit</div>
-            <div class="dpc-product">$50 West African Meal Kit</div>
-            <div class="dpc-seg">Millennials, Greater Toronto, 28–40</div>
-            <div class="dpc-stages">
-              <div class="dpc-stage">Instagram Ad</div>
-              <div class="dpc-stage active">Checkout ⚠</div>
-              <div class="dpc-stage">Product Page</div>
-              <div class="dpc-stage">Post-Email</div>
+      <div class="demo-journey" aria-label="Customer journey through four stages">
+        <div class="demo-stage">
+          <span class="demo-stage-num">1</span>
+          <div class="demo-stage-body">
+            <h4 class="demo-stage-name">Instagram Ad</h4>
+            <p class="demo-stage-desc">All 10 customers see your ad and land on the site.</p>
+            <div class="demo-stage-bar" role="img" aria-label="10 of 10 customers">
+              <span class="demo-bar-fill demo-bar-fill--full" style="width: 100%"></span>
             </div>
-          </div>
-          <div class="demo-metrics">
-            <div class="dm-box"><span class="dm-val g">10%</span><span class="dm-key">Converted</span></div>
-            <div class="dm-box"><span class="dm-val r">20%</span><span class="dm-key">Dropped</span></div>
-            <div class="dm-box"><span class="dm-val a">70%</span><span class="dm-key">Stalled</span></div>
+            <p class="demo-stage-stat"><strong>10</strong> entered</p>
           </div>
         </div>
-        <div class="demo-right">
-          <div class="race-grid-demo">
-            <div class="race-grid-demo-label">
-              <div class="live-dot"></div>
-              Panel race — 10 agents
+        <div class="demo-stage-arrow" aria-hidden="true">→</div>
+        <div class="demo-stage">
+          <span class="demo-stage-num">2</span>
+          <div class="demo-stage-body">
+            <h4 class="demo-stage-name">Product Page</h4>
+            <p class="demo-stage-desc">Most browse; a few leave early.</p>
+            <div class="demo-stage-bar" role="img" aria-label="8 active, 2 dropped">
+              <span class="demo-bar-fill demo-bar-fill--active" style="width: 80%"></span>
+              <span class="demo-bar-fill demo-bar-fill--drop" style="width: 20%"></span>
             </div>
-            <div class="race-cols">
-              <div class="race-col-demo">
-                <div class="race-col-head">Instagram</div>
-                <div class="agent-node an-blue">AT</div>
-                <div class="agent-node an-red" style="opacity:0.5">DK</div>
-                <div class="agent-node an-blue">JW</div>
-              </div>
-              <div class="race-col-demo">
-                <div class="race-col-head">Product Pg</div>
-                <div class="agent-node an-blue">ZO</div>
-                <div class="agent-node an-orange">MC</div>
-                <div class="agent-node an-amber">LP</div>
-              </div>
-              <div class="race-col-demo">
-                <div class="race-col-head">Checkout ⚡</div>
-                <div class="agent-node an-orange">RM</div>
-                <div class="agent-node an-red">SL</div>
-                <div class="agent-node an-amber">KJ</div>
-                <div class="agent-node an-orange">AR</div>
-              </div>
-              <div class="race-col-demo">
-                <div class="race-col-head">Post-Email</div>
-                <div class="agent-node an-green">DK</div>
-                <div class="agent-node an-blue">JM</div>
-              </div>
-            </div>
+            <p class="demo-stage-stat"><strong>8</strong> still going · <span class="stat-drop">2 dropped</span></p>
           </div>
-          <div class="insight-preview">
-            <div class="ip-label">Top friction trigger</div>
-            <div class="ip-item">
-              <div class="ip-num">01</div>
-              34% drop at Checkout — $6.99 shipping fee appeared without warning
+        </div>
+        <div class="demo-stage-arrow" aria-hidden="true">→</div>
+        <div class="demo-stage demo-stage--friction">
+          <span class="demo-stage-num">3</span>
+          <div class="demo-stage-body">
+            <h4 class="demo-stage-name">Checkout <span class="demo-friction-badge">Main friction</span></h4>
+            <p class="demo-stage-desc">Shipping fee appears — loss-averse customers stall or leave.</p>
+            <div class="demo-stage-bar" role="img" aria-label="3 active, 5 stalled, 2 dropped">
+              <span class="demo-bar-fill demo-bar-fill--active" style="width: 30%"></span>
+              <span class="demo-bar-fill demo-bar-fill--stall" style="width: 50%"></span>
+              <span class="demo-bar-fill demo-bar-fill--drop" style="width: 20%"></span>
             </div>
-            <div class="ip-item">
-              <div class="ip-num">02</div>
-              70% stalled — price confidence gap. Add restaurant comparison.
+            <p class="demo-stage-stat"><strong>5</strong> stalled · <span class="stat-drop">2 dropped</span> · 3 at checkout</p>
+          </div>
+        </div>
+        <div class="demo-stage-arrow" aria-hidden="true">→</div>
+        <div class="demo-stage">
+          <span class="demo-stage-num">4</span>
+          <div class="demo-stage-body">
+            <h4 class="demo-stage-name">Post-Email</h4>
+            <p class="demo-stage-desc">Follow-up to hesitant buyers; one converts.</p>
+            <div class="demo-stage-bar" role="img" aria-label="1 converted">
+              <span class="demo-bar-fill demo-bar-fill--convert" style="width: 10%"></span>
+              <span class="demo-bar-fill demo-bar-fill--stall" style="width: 90%"></span>
             </div>
+            <p class="demo-stage-stat"><strong>1</strong> converted · rest still hesitant</p>
           </div>
         </div>
       </div>
 
-      <!-- TAB: INSIGHTS -->
-      <div id="tab-insights" class="demo-inner" hidden>
-        <div style="display:flex;flex-direction:column;gap:14px;width:100%;">
-          <div style="background:var(--s2);border:1px solid var(--border2);border-radius:16px;padding:20px;border-left:3px solid var(--blue);">
-            <div style="font-size:10px;font-family:var(--mono);color:var(--dim);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:8px;">Insight 01 · Checkout · 34% dropout</div>
-            <div style="font-size:14px;color:var(--text);font-weight:600;margin-bottom:6px;">Hidden shipping cost is your biggest leak</div>
-            <div style="font-size:13px;color:var(--mid);line-height:1.7;">$6.99 shipping appeared at checkout without prior mention. Agents with high loss aversion — 52% of your panel — showed unexpected_cost friction the moment it appeared. Show shipping cost on the product page.</div>
-            <div style="margin-top:12px;display:inline-flex;align-items:center;gap:6px;background:var(--blue-dim);border:1px solid rgba(79,122,255,0.2);color:var(--blue);font-size:11px;padding:6px 12px;border-radius:8px;cursor:pointer;font-weight:600;">⚡ Test a fix</div>
-          </div>
-          <div style="background:var(--s2);border:1px solid var(--border2);border-radius:16px;padding:20px;border-left:3px solid var(--amber);">
-            <div style="font-size:10px;font-family:var(--mono);color:var(--dim);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:8px;">Insight 02 · All stages · 70% stalled</div>
-            <div style="font-size:14px;color:var(--text);font-weight:600;margin-bottom:6px;">Stall epidemic — not a dropout problem</div>
-            <div style="font-size:13px;color:var(--mid);line-height:1.7;">70% of your panel is interested but not buying. This isn't rejection — it's hesitation. The missing piece is price confidence. Add "Save $18 vs dining out" comparison text to the product page. Prospect Theory predicts this reframes the purchase as a gain.</div>
-          </div>
-          <div style="background:var(--s2);border:1px solid var(--border2);border-radius:16px;padding:20px;border-left:3px solid var(--green);">
-            <div style="font-size:10px;font-family:var(--mono);color:var(--dim);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:8px;">Insight 03 · Segment split</div>
-            <div style="font-size:14px;color:var(--text);font-weight:600;margin-bottom:6px;">West African familiar buyers need different copy</div>
-            <div style="font-size:13px;color:var(--mid);line-height:1.7;">Agents with high West African cuisine familiarity drop on value — they can make this cheaper at home. Reframe copy from authenticity to time-saved and convenience. "Skip the 2-hour prep" outperforms "restaurant-quality" for that segment.</div>
-          </div>
+      <div class="demo-legend">
+        <span class="demo-legend-item"><span class="demo-legend-dot demo-legend-dot--active"></span> Still in journey</span>
+        <span class="demo-legend-item"><span class="demo-legend-dot demo-legend-dot--stall"></span> Stalled (interested, not buying)</span>
+        <span class="demo-legend-item"><span class="demo-legend-dot demo-legend-dot--drop"></span> Dropped off</span>
+        <span class="demo-legend-item"><span class="demo-legend-dot demo-legend-dot--convert"></span> Converted</span>
+      </div>
+
+      <div class="demo-outcomes">
+        <div class="demo-outcome">
+          <span class="demo-outcome-val demo-outcome-val--g">10%</span>
+          <span class="demo-outcome-label">Converted</span>
+          <span class="demo-outcome-hint">1 of 10 bought</span>
+        </div>
+        <div class="demo-outcome">
+          <span class="demo-outcome-val demo-outcome-val--r">20%</span>
+          <span class="demo-outcome-label">Dropped off</span>
+          <span class="demo-outcome-hint">Left for good</span>
+        </div>
+        <div class="demo-outcome">
+          <span class="demo-outcome-val demo-outcome-val--a">70%</span>
+          <span class="demo-outcome-label">Stalled</span>
+          <span class="demo-outcome-hint">Interested but stuck</span>
         </div>
       </div>
 
-      <!-- TAB: AGENT -->
-      <div id="tab-agent" class="demo-inner" hidden>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;width:100%;">
-          <div style="background:var(--s2);border:1px solid var(--border2);border-radius:16px;padding:20px;">
-            <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
-              <div style="width:44px;height:44px;border-radius:13px;background:linear-gradient(135deg,var(--amber),#FF8C47);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:white;flex-shrink:0;">ZO</div>
-              <div>
-                <div style="font-size:15px;font-weight:700;color:var(--text);">Zara Okafor, 29</div>
-                <div style="font-size:11px;color:var(--dim);">Scarborough · Deliberate</div>
-              </div>
-              <div style="margin-left:auto;background:var(--amber-dim);color:var(--amber);border:1px solid rgba(255,181,71,0.3);font-size:10px;font-family:var(--mono);padding:3px 9px;border-radius:6px;">Stalled</div>
-            </div>
-            <div style="font-size:11px;color:var(--dim);font-family:var(--mono);margin-bottom:8px;letter-spacing:0.08em;text-transform:uppercase;">OCEAN Profile</div>
-            <div style="display:flex;flex-direction:column;gap:6px;">
-              <div style="display:flex;align-items:center;gap:10px;"><span style="font-size:10px;color:var(--dim);font-family:var(--mono);width:32px;">Open</span><div style="flex:1;height:4px;background:rgba(255,255,255,0.06);border-radius:2px;overflow:hidden;"><div style="width:80%;height:100%;background:var(--blue);border-radius:2px;"></div></div><span style="font-size:10px;color:var(--mid);font-family:var(--mono);">0.8</span></div>
-              <div style="display:flex;align-items:center;gap:10px;"><span style="font-size:10px;color:var(--dim);font-family:var(--mono);width:32px;">Con</span><div style="flex:1;height:4px;background:rgba(255,255,255,0.06);border-radius:2px;overflow:hidden;"><div style="width:70%;height:100%;background:var(--purple);border-radius:2px;"></div></div><span style="font-size:10px;color:var(--mid);font-family:var(--mono);">0.7</span></div>
-              <div style="display:flex;align-items:center;gap:10px;"><span style="font-size:10px;color:var(--dim);font-family:var(--mono);width:32px;">Agr</span><div style="flex:1;height:4px;background:rgba(255,255,255,0.06);border-radius:2px;overflow:hidden;"><div style="width:90%;height:100%;background:var(--green);border-radius:2px;"></div></div><span style="font-size:10px;color:var(--mid);font-family:var(--mono);">0.9</span></div>
-              <div style="display:flex;align-items:center;gap:10px;"><span style="font-size:10px;color:var(--dim);font-family:var(--mono);width:32px;">Neu</span><div style="flex:1;height:4px;background:rgba(255,255,255,0.06);border-radius:2px;overflow:hidden;"><div style="width:40%;height:100%;background:var(--red);border-radius:2px;"></div></div><span style="font-size:10px;color:var(--mid);font-family:var(--mono);">0.4</span></div>
-            </div>
-            <div style="margin-top:14px;font-size:12px;color:var(--mid);line-height:1.6;font-style:italic;padding:10px;background:var(--s3);border-radius:10px;">
-              "Second-generation Nigerian-Canadian nurse. Wants to reconnect with her heritage through cooking but watches her budget carefully."
-            </div>
-          </div>
-          <div style="display:flex;flex-direction:column;gap:10px;">
-            <div style="background:var(--s2);border:1px solid var(--border);border-radius:12px;padding:14px;">
-              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;"><span style="font-size:12px;font-weight:600;color:var(--text);">Checkout</span><span style="font-size:9px;background:var(--amber-dim);color:var(--amber);border:1px solid rgba(255,181,71,0.3);padding:2px 7px;border-radius:5px;font-family:var(--mono);">delaying</span></div>
-              <div style="font-size:12px;color:var(--mid);line-height:1.65;font-style:italic;">"$6.99 shipping on top of $48 feels steep. Maybe a second kit to waive the fee — but that's nearly $100 to try something new..."</div>
-              <div style="margin-top:8px;font-size:10px;color:var(--blue);background:var(--blue-dim);border:1px solid rgba(79,122,255,0.2);border-radius:6px;padding:6px 9px;">→ Free shipping on first orders reduces this delay by ~40%</div>
-            </div>
-            <div style="background:var(--s2);border:1px solid var(--border);border-radius:12px;padding:14px;">
-              <div style="font-size:11px;font-family:var(--mono);color:var(--dim);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px;">Friction threshold</div>
-              <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--dim);font-family:var(--mono);margin-bottom:5px;"><span>Start: 55</span><span style="color:var(--amber)">Remaining: 40</span></div>
-              <div style="height:5px;background:rgba(255,255,255,0.05);border-radius:3px;overflow:hidden;"><div style="width:73%;height:100%;background:linear-gradient(90deg,var(--green),var(--amber));border-radius:3px;"></div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
+      <article class="demo-insight">
+        <p class="demo-insight-label">Top insight from this run</p>
+        <h4 class="demo-insight-title">Hidden shipping cost is your biggest leak</h4>
+        <p class="demo-insight-body">
+          $6.99 shipping appeared at checkout with no mention on the product page. Customers with high loss aversion — over half this panel — hit <em>unexpected cost</em> friction and stalled or left.
+        </p>
+        <p class="demo-insight-fix"><strong>Suggested fix:</strong> Show shipping on the product page, or offer free shipping on first orders.</p>
+      </article>
     </div>
   </div>
+
+  <article class="demo-spotlight reveal reveal-delay-3">
+    <div class="demo-spotlight-header">
+      <div class="demo-spotlight-avatar" aria-hidden="true">ZO</div>
+      <div>
+        <h4 class="demo-spotlight-name">Zara Okafor, 29 · Scarborough</h4>
+        <p class="demo-spotlight-meta">Deliberate buyer · Stalled at Checkout</p>
+      </div>
+      <span class="demo-spotlight-badge">One customer’s view</span>
+    </div>
+    <blockquote class="demo-spotlight-quote">
+      “$6.99 shipping on top of $48 feels steep. Maybe a second kit to waive the fee — but that’s nearly $100 to try something new…”
+    </blockquote>
+    <p class="demo-spotlight-note">
+      Every customer has a psychology profile (OCEAN) and their own internal monologue at each stage — so you see <em>why</em> they behaved that way, not just that they left.
+    </p>
+  </article>
 </section>
 
 <!--
@@ -296,7 +283,7 @@
     <div class="feature-card reveal reveal-delay-2">
       <div class="feature-title">Test a fix</div>
       <div class="feature-desc">Get a recommended fix, apply it, rerun. Compare before and after side by side with delta charts.</div>
-      <div class="feature-tag">Unique to CrowdVise</div>
+      <div class="feature-tag">Unique to Crowdvise</div>
     </div>
     <div class="feature-card reveal reveal-delay-1">
       <div class="feature-title">Location-aware panels</div>
@@ -417,13 +404,13 @@
 <section class="platform-section">
   <div class="section-label" style="justify-content:center">Platforms</div>
   <h2 class="section-title reveal">Web or mobile.<br>Your choice.</h2>
-  <p class="section-sub reveal reveal-delay-1" style="margin:0 auto 0">CrowdVise runs everywhere. Full-featured web dashboard or on-the-go mobile app — same simulations, same results.</p>
+  <p class="section-sub reveal reveal-delay-1" style="margin:0 auto 0">Crowdvise runs everywhere. Full-featured web dashboard or on-the-go mobile app — same simulations, same results.</p>
 
   <div class="platform-cards reveal reveal-delay-2">
     <a href="#" data-cv-href="webApp" class="platform-card web">
       <span class="pc-icon">🖥️</span>
       <div class="pc-platform">Web App</div>
-      <div class="pc-title">CrowdVise for Teams</div>
+      <div class="pc-title">Crowdvise for Teams</div>
       <div class="pc-desc">The full dashboard experience. Run deep simulations, compare results, export to PDF or PowerPoint, and share with your team.</div>
       <span class="pc-cta">Open web app →</span>
       <ul class="pc-features">
@@ -436,7 +423,7 @@
     <a href="#" data-cv-href="mobile" class="platform-card mobile">
       <span class="pc-icon">📱</span>
       <div class="pc-platform">Mobile App</div>
-      <div class="pc-title">CrowdVise on the Go</div>
+      <div class="pc-title">Crowdvise on the Go</div>
       <div class="pc-desc">Run simulations from anywhere. Watch your panel race through stages live. Get insights and push notifications when results are ready.</div>
       <span class="pc-cta" style="background:var(--green);color:#0A1A12;">Download app →</span>
       <ul class="pc-features">
@@ -465,14 +452,14 @@
 
 <!-- ── FOOTER ── -->
 <footer>
-  <div class="footer-logo">Crowd<em>Vise</em></div>
+  <div class="footer-logo">Crowdvise</div>
   <div class="footer-links">
     <a href="#">Privacy</a>
     <a href="#">Terms</a>
     <a href="#" data-cv-href="docs">Docs</a>
     <a href="#" data-cv-href="contact">Contact</a>
   </div>
-  <div class="footer-copy">© 2026 CrowdVise Inc.</div>
+  <div class="footer-copy">© 2026 Crowdvise Inc.</div>
 </footer>
 
 <script src="js/config.js"></script>

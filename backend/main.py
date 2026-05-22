@@ -19,7 +19,7 @@ async def lifespan(_app: FastAPI):
     yield
 
 
-app = FastAPI(title="CrowdVise API", lifespan=lifespan)
+app = FastAPI(title="Crowdvise API", lifespan=lifespan)
 
 app.add_middleware(SecurityHeadersMiddleware)
 app.add_middleware(RequestSizeLimitMiddleware)
