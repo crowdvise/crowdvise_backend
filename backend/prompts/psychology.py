@@ -50,3 +50,20 @@ STANDARD_TRIGGER_KEYS = [
     "value_mismatch",
     "status_quo_inertia",
 ]
+
+# Fixed keys so every agent (and every run) shares the same shape — stable for API clients & UI mocks.
+STANDARD_CONTEXT_KEYS = [
+    "category_familiarity",
+    "price_sensitivity",
+    "purchase_urgency",
+    "brand_trust",
+]
+
+CONTEXT_ATTRIBUTE_LEVELS = ("low", "moderate", "high")
+
+CONTEXT_KEY_LABELS = {
+    "category_familiarity": "Category familiarity",
+    "price_sensitivity": "Price sensitivity",
+    "purchase_urgency": "Purchase urgency",
+    "brand_trust": "Brand trust",
+}

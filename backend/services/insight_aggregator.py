@@ -104,9 +104,8 @@ async def build_simulation_result(
     )
 
     response = await create_message(
-        model="claude-sonnet-4-20250514",
         max_tokens=1000,
-        messages=[{"role": "user", "content": prompt}]
+        messages=[{"role": "user", "content": prompt}],
     )
 
     raw = parse_llm_json(get_response_text(response))

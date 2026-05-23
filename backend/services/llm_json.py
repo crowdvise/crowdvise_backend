@@ -7,8 +7,13 @@ class LLMParseError(Exception):
 
 
 def get_response_text(response) -> str:
-    parts = [block.text for block in response.content if hasattr(block, "text")]
-    text = "".join(parts).strip()
+    if hasattr(response, "choices"):
+        message = response.choices[0].message
+        text = (message.content or "").strip()
+    else:
+        parts = [block.text for block in response.content if hasattr(block, "text")]
+        text = "".join(parts).strip()
+
     if not text:
         raise LLMParseError("Model returned an empty response")
     return text

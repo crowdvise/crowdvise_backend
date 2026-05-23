@@ -1,7 +1,7 @@
 from contextlib import asynccontextmanager
 
 from dotenv import load_dotenv
-from anthropic import RateLimitError
+from openai import RateLimitError
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
@@ -45,7 +45,7 @@ async def llm_parse_error_handler(_request: Request, exc: LLMParseError):
 
 
 @app.exception_handler(RateLimitError)
-async def anthropic_rate_limit_handler(_request: Request, _exc: RateLimitError):
+async def openai_rate_limit_handler(_request: Request, _exc: RateLimitError):
     return JSONResponse(
         status_code=429,
         content={

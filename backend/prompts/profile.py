@@ -1,12 +1,16 @@
 from prompts.psychology import (
     BEHAVIOURAL_FRAMEWORKS,
+    CONTEXT_ATTRIBUTE_LEVELS,
     OCEAN_TO_SENSITIVITY_RULES,
+    STANDARD_CONTEXT_KEYS,
     STANDARD_TRIGGER_KEYS,
 )
 
 
 def build_profile_prompt(product_description: str, target_segment: str, count: int) -> str:
     trigger_keys = ", ".join(STANDARD_TRIGGER_KEYS)
+    context_keys = ", ".join(STANDARD_CONTEXT_KEYS)
+    context_levels = " | ".join(f'"{v}"' for v in CONTEXT_ATTRIBUTE_LEVELS)
 
     return f"""
 You are a behavioural scientist generating synthetic customer profiles for a simulation.
@@ -23,7 +27,8 @@ Generate {count} psychologically distinct profiles. Vary OCEAN scores meaningful
 For each profile:
 1. Assign OCEAN scores (0.0–1.0 each dimension)
 2. Assign status_quo_tendency (0.0–1.0) — how strongly they resist changing from current habits/defaults
-3. Add 2–4 context_attributes: product-specific dimensions only (snake_case keys; values like "low" | "moderate" | "high"). Same keys across all profiles.
+3. Set context_attributes using EXACTLY these four keys (no others): {context_keys}
+   Values must be one of: {context_levels}. Interpret each key for this product (e.g. category_familiarity = familiarity with this product category).
 4. Derive trigger_sensitivities from OCEAN + status_quo_tendency using these rules:
 
 {OCEAN_TO_SENSITIVITY_RULES}
@@ -49,7 +54,7 @@ Return a JSON array:
       "neuroticism": float 0.0-1.0
     }},
     "status_quo_tendency": float 0.0-1.0,
-    "context_attributes": {{ "product_specific_key": "value", ... }},
+    "context_attributes": {{ "{STANDARD_CONTEXT_KEYS[0]}": "{CONTEXT_ATTRIBUTE_LEVELS[1]}", "{STANDARD_CONTEXT_KEYS[1]}": "{CONTEXT_ATTRIBUTE_LEVELS[1]}", "{STANDARD_CONTEXT_KEYS[2]}": "{CONTEXT_ATTRIBUTE_LEVELS[1]}", "{STANDARD_CONTEXT_KEYS[3]}": "{CONTEXT_ATTRIBUTE_LEVELS[1]}" }},
     "trigger_sensitivities": {{ "{STANDARD_TRIGGER_KEYS[0]}": float, ... }},
     "lifestyle_notes": "1-2 sentences of human texture"
   }}

@@ -11,7 +11,7 @@ Synthetic customer simulation API and marketing site. The backend generates psyc
 ## Requirements
 
 - Python 3.11+
-- [Anthropic API](https://console.anthropic.com/) key
+- [OpenAI API](https://platform.openai.com/api-keys) key
 - [Supabase](https://supabase.com/) project (Auth + Postgres) — optional for local dev with `AUTH_DISABLED=true`
 
 ## Quick start (backend)
@@ -23,7 +23,7 @@ source venv/bin/activate   # Windows: venv\Scripts\activate
 pip install -r requirements.txt
 
 cp .env.example .env
-# Edit .env — at minimum set ANTHROPIC_API_KEY
+# Edit .env — at minimum set OPENAI_API_KEY (optional: OPENAI_MODEL, default gpt-4o-mini)
 # For local dev without Supabase: AUTH_DISABLED=true
 
 uvicorn main:app --reload --host 127.0.0.1 --port 8000

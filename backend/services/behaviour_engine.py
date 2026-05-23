@@ -36,9 +36,8 @@ async def run_agent_journey(
         )
 
         response = await create_message(
-            model="claude-sonnet-4-20250514",
             max_tokens=600,
-            messages=[{"role": "user", "content": prompt}]
+            messages=[{"role": "user", "content": prompt}],
         )
 
         raw = parse_llm_json(get_response_text(response))

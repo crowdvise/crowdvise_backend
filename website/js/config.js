@@ -1,7 +1,8 @@
 /** Update these URLs when web app / auth routes are deployed. */
 window.CROWDVISE = {
   webApp: '/app',
-  mobile: '/mobile',
+  iosApp: '#',
+  androidApp: '#',
   signup: '/signup',
   login: '/login',
   docs: '#',

@@ -27,15 +27,16 @@ settings = Settings()
 
 
 def validate_settings() -> None:
-    if settings.auth_disabled:
-        return
     missing = []
-    if not settings.supabase_url:
-        missing.append("SUPABASE_URL")
-    if not settings.supabase_service_role_key:
-        missing.append("SUPABASE_SERVICE_ROLE_KEY")
+    if not os.getenv("OPENAI_API_KEY"):
+        missing.append("OPENAI_API_KEY")
+    if not settings.auth_disabled:
+        if not settings.supabase_url:
+            missing.append("SUPABASE_URL")
+        if not settings.supabase_service_role_key:
+            missing.append("SUPABASE_SERVICE_ROLE_KEY")
     if missing:
         raise RuntimeError(
             f"Missing required env vars: {', '.join(missing)}. "
-            "Set them for Supabase auth, or AUTH_DISABLED=true for local dev only."
+            "Set OPENAI_API_KEY for the LLM. For local dev without Supabase, use AUTH_DISABLED=true."
         )
