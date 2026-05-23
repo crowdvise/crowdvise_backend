@@ -1,4 +1,9 @@
+import logging
+from uuid import UUID
+
 from fastapi import APIRouter, Depends, HTTPException
+
+logger = logging.getLogger(__name__)
 from config import settings
 from dependencies.auth import AuthUser, get_current_user, require_generate_stages_limit, require_run_limit
 from models import (
@@ -54,9 +59,22 @@ async def run(
         try:
             save_simulation_run(user.id, request, result)
         except SimulationStoreError as exc:
+            logger.exception("Failed to save simulation run for user %s", user.id)
             raise handle_store_error(exc) from exc
 
     return result
+
+
+@router.get("/run", include_in_schema=False)
+async def run_wrong_method() -> None:
+    """Catch GET /simulation/run — otherwise it is treated as GET /simulation/{simulation_id}."""
+    raise HTTPException(
+        status_code=405,
+        detail=(
+            "Use POST /simulation/run to start a simulation. "
+            "Use GET /simulation/{simulation_id} with the id from the POST response to fetch a saved run."
+        ),
+    )
 
 
 @router.get("/history", response_model=SimulationHistoryResponse)
@@ -64,6 +82,7 @@ async def history(user: AuthUser = Depends(get_current_user)) -> SimulationHisto
     try:
         rows = list_simulation_runs(user.id)
     except SimulationStoreError as exc:
+        logger.exception("Failed to list simulation history")
         raise handle_store_error(exc) from exc
 
     runs = [
@@ -85,12 +104,13 @@ async def history(user: AuthUser = Depends(get_current_user)) -> SimulationHisto
 
 @router.get("/{simulation_id}", response_model=SimulationResult)
 async def get_run(
-    simulation_id: str,
+    simulation_id: UUID,
     user: AuthUser = Depends(get_current_user),
 ) -> SimulationResult:
     try:
-        result = get_simulation_run(user.id, simulation_id)
+        result = get_simulation_run(user.id, str(simulation_id))
     except SimulationStoreError as exc:
+        logger.exception("Failed to fetch simulation %s", simulation_id)
         raise handle_store_error(exc) from exc
 
     if not result:

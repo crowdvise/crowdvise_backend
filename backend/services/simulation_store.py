@@ -80,6 +80,8 @@ def get_simulation_run(user_id: str, simulation_id: str) -> SimulationResult | N
 
 def handle_store_error(exc: SimulationStoreError) -> HTTPException:
     detail = str(exc)
-    if "simulation_runs" in detail and ("does not exist" in detail or "PGRST205" in detail):
+    if "22P02" in detail and "uuid" in detail.lower():
+        detail = "Invalid simulation id."
+    elif "simulation_runs" in detail and ("does not exist" in detail or "PGRST205" in detail):
         detail = "Database table missing. Run backend/supabase/schema.sql in Supabase SQL Editor."
     return HTTPException(status_code=status.HTTP_503_SERVICE_UNAVAILABLE, detail=detail)

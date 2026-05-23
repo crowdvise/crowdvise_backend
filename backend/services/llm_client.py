@@ -5,8 +5,20 @@ from openai import AsyncOpenAI, RateLimitError
 
 DEFAULT_MODEL = os.getenv("OPENAI_MODEL", "gpt-4o-mini")
 
-client = AsyncOpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+_client: AsyncOpenAI | None = None
 _max_concurrent = int(os.getenv("MAX_CONCURRENT_LLM_CALLS", "3"))
+
+
+def _get_client() -> AsyncOpenAI:
+    global _client
+    if _client is None:
+        api_key = os.getenv("OPENAI_API_KEY")
+        if not api_key:
+            raise RuntimeError(
+                "OPENAI_API_KEY is not set. Add it to backend/.env or the repo-root .env."
+            )
+        _client = AsyncOpenAI(api_key=api_key)
+    return _client
 _semaphore = asyncio.Semaphore(_max_concurrent)
 
 
@@ -22,7 +34,7 @@ async def create_message(
     for attempt in range(max_retries):
         async with _semaphore:
             try:
-                return await client.chat.completions.create(
+                return await _get_client().chat.completions.create(
                     model=model,
                     messages=messages,
                     max_tokens=max_tokens,
