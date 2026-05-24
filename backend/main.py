@@ -14,7 +14,7 @@ from openai import RateLimitError
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
-from routers import simulation
+from routers import profile, simulation
 from config import settings, validate_settings
 from middleware.security import RequestSizeLimitMiddleware, SecurityHeadersMiddleware
 from services.llm_json import LLMParseError
@@ -37,11 +37,12 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=settings.allowed_origins,
     allow_credentials=True,
-    allow_methods=["GET", "POST", "OPTIONS"],
+    allow_methods=["GET", "POST", "PUT", "OPTIONS"],
     allow_headers=["Authorization", "Content-Type", "Accept"],
 )
 
 app.include_router(simulation.router)
+app.include_router(profile.router)
 
 
 @app.get("/health")

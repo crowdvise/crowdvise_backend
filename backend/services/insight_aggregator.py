@@ -11,7 +11,8 @@ def aggregate_stage_insights(journeys: list[AgentJourney]) -> list[StageInsight]
     stage_data: dict[str, dict] = {}
 
     for journey in journeys:
-        for reaction in journey.reactions:
+        reactions = journey.reactions
+        for idx, reaction in enumerate(reactions):
             s = reaction.stage_name
             if s not in stage_data:
                 stage_data[s] = {"total": 0, "dropped": 0, "delayed": 0, "confused": 0, "triggers": []}
@@ -20,7 +21,14 @@ def aggregate_stage_insights(journeys: list[AgentJourney]) -> list[StageInsight]
 
             if reaction.behaviour == "dropped":
                 stage_data[s]["dropped"] += 1
+            is_last_reaction = idx == len(reactions) - 1
             if reaction.behaviour == "delaying":
+                stage_data[s]["delayed"] += 1
+            elif (
+                is_last_reaction
+                and journey.final_outcome == "delayed"
+                and reaction.behaviour == "continuing"
+            ):
                 stage_data[s]["delayed"] += 1
             if reaction.behaviour == "confused":
                 stage_data[s]["confused"] += 1

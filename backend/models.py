@@ -193,3 +193,24 @@ class SimulationRunResponse(BaseModel):
     run_index: int
     reruns_remaining: int
     journey_stages: list[JourneyStage]
+
+
+MAX_FIRST_NAME = 80
+MAX_LAST_NAME = 80
+MAX_INDUSTRY = 120
+
+
+class UserProfileUpsertRequest(BaseModel):
+    first_name: str = Field(min_length=1, max_length=MAX_FIRST_NAME)
+    last_name: str = Field(min_length=1, max_length=MAX_LAST_NAME)
+    industry: str = Field(min_length=1, max_length=MAX_INDUSTRY)
+
+
+class UserProfileResponse(BaseModel):
+    id: str
+    email: str | None = None
+    first_name: str
+    last_name: str
+    industry: str
+    created_at: str
+    updated_at: str

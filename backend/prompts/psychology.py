@@ -26,8 +26,9 @@ Reason about every agent through these five validated lenses:
 """
 
 STAGE_REASONING_BRIEF = """
-Apply: OCEAN personality | Prospect Theory (losses ~2× gains) | Cialdini if converting |
+Apply: OCEAN personality | Prospect Theory (losses ~2× gains) | Cialdini on the final stage if converting |
 cognitive_load if overwhelmed | status_quo_inertia if delaying despite better options.
+"converted" means the customer committed (purchase, subscribe, register) — only on the last stage.
 """
 
 OCEAN_TO_SENSITIVITY_RULES = """

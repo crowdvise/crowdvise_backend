@@ -3,7 +3,7 @@ from prompts.stage import build_stage_prompt
 from services.llm_client import create_message
 from services.llm_json import get_response_text, parse_llm_json
 from services.prompt_safety import chat_messages
-from services.stage_reaction_normalize import normalize_stage_reaction
+from services.stage_reaction_normalize import apply_stage_rules
 
 
 def _slim_reaction(raw: dict) -> dict:
@@ -25,16 +25,22 @@ async def run_agent_journey(
     previous_reactions: list[dict] = []
     dropped = False
     dropped_at = None
+    stages_sorted = sorted(stages, key=lambda s: s.order)
+    final_stage_order = stages_sorted[-1].order if stages_sorted else 0
+    remaining_friction = agent.friction_threshold
 
-    for stage in sorted(stages, key=lambda s: s.order):
+    for stage in stages_sorted:
         if dropped:
             break
+
+        is_final_stage = stage.order == final_stage_order
 
         prompt = build_stage_prompt(
             agent=agent_dict,
             stage=stage.model_dump(),
             previous_reactions=previous_reactions,
-            product_description=product_description
+            product_description=product_description,
+            is_final_stage=is_final_stage,
         )
 
         response = await create_message(
@@ -43,9 +49,14 @@ async def run_agent_journey(
             json_mode=True,
         )
 
-        raw = normalize_stage_reaction(parse_llm_json(get_response_text(response)))
+        raw = apply_stage_rules(
+            parse_llm_json(get_response_text(response)),
+            remaining_before=remaining_friction,
+            is_final_stage=is_final_stage,
+        )
 
-        agent_dict["friction_threshold"] = raw["remaining_threshold"]
+        remaining_friction = raw["remaining_threshold"]
+        agent_dict["friction_threshold"] = remaining_friction
 
         reaction = StageReaction(**raw)
         reactions.append(reaction)

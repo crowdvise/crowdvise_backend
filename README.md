@@ -39,6 +39,7 @@ Run commands from the **`backend/`** directory so imports and `.env` resolve cor
 1. **`POST /simulation/generate-stages`** — Plain-English product input → suggested journey stages (editable by the client).
 2. **`POST /simulation/run`** — Confirmed stages + panel size (`10`, `25`, or `50`) → full simulation result.
 3. **`GET /simulation/history`** / **`GET /simulation/{id}`** — Past runs (requires Supabase auth; skipped when `AUTH_DISABLED=true`).
+4. **`PUT /profile`** — After Supabase signup, save `first_name`, `last_name`, `industry`. **`GET /profile`** — Read back.
 
 Protected routes expect:
 
@@ -51,7 +52,7 @@ See [`backend/.env.example`](backend/.env.example) for CORS, rate limits, and re
 ## Supabase setup
 
 1. Create a project and enable Auth (email, magic link, or OAuth as you prefer).
-2. Run [`backend/supabase/schema.sql`](backend/supabase/schema.sql) in the SQL editor.
+2. Run [`backend/supabase/schema.sql`](backend/supabase/schema.sql) in the SQL editor (includes `profiles`; or run migrations `002` + `003` on existing DBs).
 3. Set `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` in `backend/.env`.
 
 The API inserts runs with the service role and scopes rows by `user_id` from the JWT.

@@ -62,3 +62,37 @@ create policy "Users read own simulation experiments"
   to authenticated
   using (auth.uid() = user_id);
 
+-- User profiles (signup: first name, last name, industry)
+create table if not exists public.profiles (
+  id uuid primary key references auth.users (id) on delete cascade,
+  email text,
+  first_name text not null,
+  last_name text not null,
+  industry text not null,
+  created_at timestamptz not null default now(),
+  updated_at timestamptz not null default now()
+);
+
+create index if not exists profiles_industry_idx on public.profiles (industry);
+
+alter table public.profiles enable row level security;
+
+create policy "Users read own profile"
+  on public.profiles
+  for select
+  to authenticated
+  using (auth.uid() = id);
+
+create policy "Users update own profile"
+  on public.profiles
+  for update
+  to authenticated
+  using (auth.uid() = id)
+  with check (auth.uid() = id);
+
+create policy "Users insert own profile"
+  on public.profiles
+  for insert
+  to authenticated
+  with check (auth.uid() = id);
+
