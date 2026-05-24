@@ -3,6 +3,7 @@ from prompts.stage import build_stage_prompt
 from services.llm_client import create_message
 from services.llm_json import get_response_text, parse_llm_json
 from services.prompt_safety import chat_messages
+from services.stage_reaction_normalize import normalize_stage_reaction
 
 
 def _slim_reaction(raw: dict) -> dict:
@@ -42,7 +43,7 @@ async def run_agent_journey(
             json_mode=True,
         )
 
-        raw = parse_llm_json(get_response_text(response))
+        raw = normalize_stage_reaction(parse_llm_json(get_response_text(response)))
 
         agent_dict["friction_threshold"] = raw["remaining_threshold"]
 

@@ -61,7 +61,7 @@ Return JSON:
       "age": number,
       "gender": "string",
       "location": "string",
-      "income_bracket": "low" | "middle" | "high",
+      "income_bracket": "low" | "middle" | "high" (use middle, not medium),
       "decision_style": "impulsive" | "deliberate" | "analytical",
       "friction_threshold": number 40-90 (lower base threshold when neuroticism is high),
       "backstory": "one sentence",

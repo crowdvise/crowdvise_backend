@@ -3,6 +3,7 @@ from fastapi import HTTPException
 from models import AgentProfile, OceanProfile
 from prompts.profile import build_profile_prompt
 from services.context_attributes import normalize_context_attributes
+from services.profile_normalize import normalize_profile_dict
 from services.llm_client import create_message
 from services.llm_json import LLMParseError, get_response_text, parse_llm_json
 from services.prompt_safety import chat_messages
@@ -22,7 +23,7 @@ def _profiles_from_raw(raw: list) -> list[AgentProfile]:
     for p in raw:
         if not isinstance(p, dict):
             continue
-        p = dict(p)
+        p = normalize_profile_dict(p)
         p["id"] = f"agent_{len(profiles) + 1}"
         p["ocean"] = OceanProfile(**p["ocean"])
         p["context_attributes"] = normalize_context_attributes(p.get("context_attributes"))
