@@ -3,7 +3,13 @@
 
   document.querySelectorAll('[data-cv-href]').forEach((el) => {
     const key = el.getAttribute('data-cv-href');
-    if (cfg[key]) el.setAttribute('href', cfg[key]);
+    const url = cfg[key];
+    if (!url) return;
+    el.setAttribute('href', url);
+    if (/^https?:\/\//i.test(url)) {
+      el.setAttribute('target', '_blank');
+      el.setAttribute('rel', 'noopener noreferrer');
+    }
   });
 
   const cursor = document.getElementById('cursor');

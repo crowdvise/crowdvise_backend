@@ -3,6 +3,7 @@ from models import AgentJourney, StageInsight, SimulationResult
 from prompts.insight import build_insight_prompt
 from services.llm_client import create_message
 from services.llm_json import get_response_text, parse_llm_json
+from services.readiness_score import compute_readiness_score, readiness_level
 
 
 def aggregate_stage_insights(journeys: list[AgentJourney]) -> list[StageInsight]:
@@ -110,6 +111,13 @@ async def build_simulation_result(
 
     raw = parse_llm_json(get_response_text(response))
 
+    score = compute_readiness_score(
+        conversion_rate=overall_stats["conversion_rate"],
+        dropout_rate=overall_stats["dropout_rate"],
+        delayed_rate=overall_stats["delayed_rate"],
+        stage_insights=stage_insights,
+    )
+
     return SimulationResult(
         simulation_id=str(uuid.uuid4()),
         overall_conversion_rate=overall_stats["conversion_rate"],
@@ -118,5 +126,6 @@ async def build_simulation_result(
         agent_journeys=journeys,
         stage_insights=stage_insights,
         top_insights=raw["top_insights"],
-        readiness_score=raw["readiness_score"]
+        readiness_score=score,
+        readiness_level=readiness_level(score),
     )

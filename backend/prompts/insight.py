@@ -44,12 +44,10 @@ Insight mix rules:
 - If delayed_rate >= 0.3 OR dominant_pattern is "delay_epidemic": at least 1 insight must target hesitators and how to unstall them
 - If dropout_rate >= 0.3: at least 1 insight must target hard drop-offs
 - If conversion_rate >= 0.3: at least 1 insight should reinforce what is working for converters (Cialdini/success path)
-- Readiness score should penalise delay epidemics (stalled demand) not only hard dropouts
 
 Return a JSON object:
 {{
-  "top_insights": ["insight 1", "insight 2", "insight 3"],
-  "readiness_score": number 0-100
+  "top_insights": ["insight 1", "insight 2", "insight 3"]
 }}
 
 Return ONLY the JSON object. No explanation, no markdown.

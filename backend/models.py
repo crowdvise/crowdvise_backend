@@ -1,5 +1,6 @@
-from pydantic import BaseModel, Field
-from typing import Literal
+from typing import Literal, Self
+
+from pydantic import BaseModel, Field, model_validator
 
 
 class JourneyStage(BaseModel):
@@ -85,6 +86,15 @@ class SimulationResult(BaseModel):
     stage_insights: list[StageInsight]
     top_insights: list[str]
     readiness_score: int
+    readiness_level: Literal["not_ready", "iterate", "ready"] | None = None
+
+    @model_validator(mode="after")
+    def _default_readiness_level(self) -> Self:
+        if self.readiness_level is None:
+            from services.readiness_score import readiness_level as level_for_score
+
+            self.readiness_level = level_for_score(self.readiness_score)
+        return self
 
 
 class SimulationRunSummary(BaseModel):

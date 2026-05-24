@@ -7,7 +7,13 @@ from prompts.psychology import (
 )
 
 
-def build_profile_prompt(product_description: str, target_segment: str, count: int) -> str:
+def build_profile_prompt(
+    product_description: str,
+    target_segment: str,
+    count: int,
+    *,
+    top_up: bool = False,
+) -> str:
     trigger_keys = ", ".join(STANDARD_TRIGGER_KEYS)
     context_keys = ", ".join(STANDARD_CONTEXT_KEYS)
     context_levels = " | ".join(f'"{v}"' for v in CONTEXT_ATTRIBUTE_LEVELS)
@@ -21,6 +27,9 @@ Every agent is grounded in the Big Five (OCEAN) — the most empirically validat
 Product being tested: {product_description}
 Target customer segment: {target_segment}
 Number of profiles to generate: {count}
+{"This is a top-up request: return EXACTLY " + str(count) + " additional profiles that are distinct from any you already generated." if top_up else ""}
+
+You MUST return a JSON array with EXACTLY {count} profile objects — not {count - 1}, not {count + 1}.
 
 Generate {count} psychologically distinct profiles. Vary OCEAN scores meaningfully across the panel — avoid clustering everyone in the middle. Location must be specific and behaviourally meaningful (e.g. "Downtown Toronto", "Suburban Mississauga").
 
