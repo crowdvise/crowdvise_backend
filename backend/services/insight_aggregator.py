@@ -3,6 +3,7 @@ from models import AgentJourney, StageInsight, SimulationResult
 from prompts.insight import build_insight_prompt
 from services.llm_client import create_message
 from services.llm_json import get_response_text, parse_llm_json
+from services.prompt_safety import chat_messages
 from services.readiness_score import compute_readiness_score, readiness_level
 
 
@@ -106,7 +107,8 @@ async def build_simulation_result(
 
     response = await create_message(
         max_tokens=1000,
-        messages=[{"role": "user", "content": prompt}],
+        messages=chat_messages(prompt, json_response=True),
+        json_mode=True,
     )
 
     raw = parse_llm_json(get_response_text(response))

@@ -3,6 +3,9 @@ import os
 
 from openai import AsyncOpenAI, RateLimitError
 
+from services.rate_limit import rate_limiter
+from services.usage_context import get_user
+
 DEFAULT_MODEL = os.getenv("OPENAI_MODEL", "gpt-4o-mini")
 
 _client: AsyncOpenAI | None = None
@@ -19,7 +22,18 @@ def _get_client() -> AsyncOpenAI:
             )
         _client = AsyncOpenAI(api_key=api_key)
     return _client
+
+
 _semaphore = asyncio.Semaphore(_max_concurrent)
+
+
+def _record_usage(response) -> None:
+    user_id = get_user()
+    usage = getattr(response, "usage", None)
+    if not user_id or not usage:
+        return
+    total = (usage.prompt_tokens or 0) + (usage.completion_tokens or 0)
+    rate_limiter.record_tokens(user_id, total)
 
 
 async def create_message(
@@ -28,17 +42,23 @@ async def create_message(
     max_tokens: int,
     model: str | None = None,
     max_retries: int = 5,
+    json_mode: bool = False,
 ):
     model = model or DEFAULT_MODEL
+    kwargs: dict = {
+        "model": model,
+        "messages": messages,
+        "max_tokens": max_tokens,
+    }
+    if json_mode:
+        kwargs["response_format"] = {"type": "json_object"}
 
     for attempt in range(max_retries):
         async with _semaphore:
             try:
-                return await _get_client().chat.completions.create(
-                    model=model,
-                    messages=messages,
-                    max_tokens=max_tokens,
-                )
+                response = await _get_client().chat.completions.create(**kwargs)
+                _record_usage(response)
+                return response
             except RateLimitError:
                 if attempt == max_retries - 1:
                     raise

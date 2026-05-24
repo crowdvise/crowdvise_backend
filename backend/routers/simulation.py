@@ -5,7 +5,14 @@ from fastapi import APIRouter, Depends, HTTPException
 
 logger = logging.getLogger(__name__)
 from config import settings
-from dependencies.auth import AuthUser, get_current_user, require_generate_stages_limit, require_run_limit
+from dependencies.auth import (
+    AuthUser,
+    get_current_user,
+    require_generate_stages_limit,
+    require_history_limit,
+    require_run_limit,
+)
+from services.usage_context import set_user
 from models import (
     SimulationHistoryResponse,
     SimulationRequest,
@@ -31,8 +38,9 @@ router = APIRouter(prefix="/simulation", tags=["simulation"])
 @router.post("/generate-stages", response_model=StageGenerationResponse)
 async def generate_journey_stages(
     request: StageGenerationRequest,
-    _user: AuthUser = Depends(require_generate_stages_limit),
+    user: AuthUser = Depends(require_generate_stages_limit),
 ) -> StageGenerationResponse:
+    set_user(user.id)
     stages = await generate_stages(
         product_description=request.product_description,
         test_scenario=request.test_scenario,
@@ -49,9 +57,7 @@ async def run(
     request: SimulationRequest,
     user: AuthUser = Depends(require_run_limit),
 ) -> SimulationResult:
-    if not request.journey_stages:
-        raise HTTPException(status_code=400, detail="At least one journey stage is required")
-
+    set_user(user.id)
     journeys = await run_simulation(request)
     result = await build_simulation_result(journeys, request.product_description)
 
@@ -78,7 +84,7 @@ async def run_wrong_method() -> None:
 
 
 @router.get("/history", response_model=SimulationHistoryResponse)
-async def history(user: AuthUser = Depends(get_current_user)) -> SimulationHistoryResponse:
+async def history(user: AuthUser = Depends(require_history_limit)) -> SimulationHistoryResponse:
     try:
         rows = list_simulation_runs(user.id)
     except SimulationStoreError as exc:

@@ -73,3 +73,12 @@ async def require_run_limit(user: AuthUser = Depends(get_current_user)) -> AuthU
         window_seconds=settings.rate_limit_window_seconds,
     )
     return user
+
+
+async def require_history_limit(user: AuthUser = Depends(get_current_user)) -> AuthUser:
+    rate_limiter.check(
+        key=f"history:{user.id}",
+        max_calls=settings.rate_limit_history,
+        window_seconds=settings.rate_limit_window_seconds,
+    )
+    return user

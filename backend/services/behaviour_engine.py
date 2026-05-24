@@ -2,6 +2,7 @@ from models import AgentProfile, AgentJourney, StageReaction, JourneyStage
 from prompts.stage import build_stage_prompt
 from services.llm_client import create_message
 from services.llm_json import get_response_text, parse_llm_json
+from services.prompt_safety import chat_messages
 
 
 def _slim_reaction(raw: dict) -> dict:
@@ -37,7 +38,8 @@ async def run_agent_journey(
 
         response = await create_message(
             max_tokens=600,
-            messages=[{"role": "user", "content": prompt}],
+            messages=chat_messages(prompt, json_response=True),
+            json_mode=True,
         )
 
         raw = parse_llm_json(get_response_text(response))

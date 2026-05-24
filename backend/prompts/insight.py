@@ -1,3 +1,8 @@
+import json
+
+from services.prompt_safety import wrap_user_input
+
+
 def build_insight_prompt(
     product_description: str,
     stage_insights: list[dict],
@@ -5,6 +10,7 @@ def build_insight_prompt(
     delayed_segment: list[dict],
 ) -> str:
     dominant = overall_stats.get("dominant_pattern", "mixed")
+    product = wrap_user_input(product_description, "product_description")
 
     delay_guidance = ""
     if overall_stats.get("delayed", 0) > 0:
@@ -14,7 +20,7 @@ DELAYED SEGMENT (critical — do not ignore):
 Delayed agents are recoverable demand. At least ONE of your 3 insights MUST focus on this segment: why they hesitated, which stage stalled them, and the single highest-leverage change to convert hesitators.
 
 Delayed agent details:
-{delayed_segment}
+{json.dumps(delayed_segment)}
 """
     if dominant == "delay_epidemic":
         delay_guidance += """
@@ -26,13 +32,13 @@ Do NOT write three dropout-only insights when delay dominates the panel.
     return f"""
 You are a senior UX researcher and behavioural economist analysing simulation results.
 
-Product tested: {product_description}
+{product}
 
 Overall results (conversion + dropout + delayed are separate outcomes — they must sum to 100% of the panel):
-{overall_stats}
+{json.dumps(overall_stats)}
 
 Stage breakdown (includes delay_rate = agents showing "delaying" behaviour at that stage):
-{stage_insights}
+{json.dumps(stage_insights)}
 {delay_guidance}
 
 Generate exactly 3 specific, actionable insights a product team can implement immediately. Each insight must:
@@ -49,6 +55,4 @@ Return a JSON object:
 {{
   "top_insights": ["insight 1", "insight 2", "insight 3"]
 }}
-
-Return ONLY the JSON object. No explanation, no markdown.
 """

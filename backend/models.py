@@ -2,17 +2,27 @@ from typing import Literal, Self
 
 from pydantic import BaseModel, Field, model_validator
 
+from services.simulation_limits import (
+    MAX_JOURNEY_STAGES,
+    MAX_PRODUCT_DESCRIPTION,
+    MAX_STAGE_DESCRIPTION,
+    MAX_STAGE_NAME,
+    MAX_TARGET_SEGMENT,
+    MAX_TEST_SCENARIO,
+    validate_run_budget,
+)
+
 
 class JourneyStage(BaseModel):
     order: int
-    name: str
-    description: str
+    name: str = Field(max_length=MAX_STAGE_NAME)
+    description: str = Field(max_length=MAX_STAGE_DESCRIPTION)
 
 
 class StageGenerationRequest(BaseModel):
-    product_description: str
-    test_scenario: str
-    target_segment: str
+    product_description: str = Field(max_length=MAX_PRODUCT_DESCRIPTION)
+    test_scenario: str = Field(max_length=MAX_TEST_SCENARIO)
+    target_segment: str = Field(max_length=MAX_TARGET_SEGMENT)
 
 
 class StageGenerationResponse(BaseModel):
@@ -20,10 +30,15 @@ class StageGenerationResponse(BaseModel):
 
 
 class SimulationRequest(BaseModel):
-    product_description: str
-    target_segment: str
+    product_description: str = Field(max_length=MAX_PRODUCT_DESCRIPTION)
+    target_segment: str = Field(max_length=MAX_TARGET_SEGMENT)
     panel_size: Literal[10, 25, 50]
-    journey_stages: list[JourneyStage]
+    journey_stages: list[JourneyStage] = Field(min_length=1, max_length=MAX_JOURNEY_STAGES)
+
+    @model_validator(mode="after")
+    def _check_run_budget(self) -> Self:
+        validate_run_budget(self.panel_size, len(self.journey_stages))
+        return self
 
 
 class OceanProfile(BaseModel):

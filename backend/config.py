@@ -19,8 +19,12 @@ class Settings:
     max_request_bytes: int = int(os.getenv("MAX_REQUEST_BYTES", "1048576"))
 
     rate_limit_generate_stages: int = int(os.getenv("RATE_LIMIT_GENERATE_STAGES", "30"))
-    rate_limit_run: int = int(os.getenv("RATE_LIMIT_RUN", "10"))
+    rate_limit_run: int = int(os.getenv("RATE_LIMIT_RUN", "5"))
+    rate_limit_history: int = int(os.getenv("RATE_LIMIT_HISTORY", "60"))
     rate_limit_window_seconds: int = int(os.getenv("RATE_LIMIT_WINDOW_SECONDS", "3600"))
+    rate_limit_daily_tokens: int = int(os.getenv("RATE_LIMIT_DAILY_TOKENS", "500000"))
+
+    redis_url: str = os.getenv("REDIS_URL", "").strip()
 
 
 settings = Settings()

@@ -5,10 +5,16 @@ from prompts.profile import build_profile_prompt
 from services.context_attributes import normalize_context_attributes
 from services.llm_client import create_message
 from services.llm_json import LLMParseError, get_response_text, parse_llm_json
+from services.prompt_safety import chat_messages
+from services.simulation_limits import MAX_TOP_UP_ROUNDS, PROFILE_BATCH_SIZE
 
-# One LLM call per batch — large panels (e.g. 50) are unreliable in a single response
-PROFILE_BATCH_SIZE = 10
-MAX_TOP_UP_ROUNDS = 2
+
+def _extract_profiles(raw) -> list:
+    if isinstance(raw, dict):
+        return raw.get("profiles") or []
+    if isinstance(raw, list):
+        return raw
+    return []
 
 
 def _profiles_from_raw(raw: list) -> list[AgentProfile]:
@@ -39,12 +45,14 @@ async def _fetch_profiles(
     )
     response = await create_message(
         max_tokens=8000,
-        messages=[{"role": "user", "content": prompt}],
+        messages=chat_messages(prompt, json_response=True),
+        json_mode=True,
     )
     raw = parse_llm_json(get_response_text(response))
-    if not isinstance(raw, list):
-        raise LLMParseError(f"Expected a JSON array of profiles, got {type(raw).__name__}")
-    return _profiles_from_raw(raw)
+    items = _extract_profiles(raw)
+    if not isinstance(items, list):
+        raise LLMParseError(f"Expected profiles array, got {type(items).__name__}")
+    return _profiles_from_raw(items)
 
 
 async def _fetch_profiles_with_top_up(
